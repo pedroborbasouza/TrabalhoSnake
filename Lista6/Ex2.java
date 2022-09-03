@@ -39,9 +39,7 @@ public class Ex2 {
 
         System.out.println();
         System.out.println("O maior número dos 5 digitados é: "+numMaior);
-        System.out.println();
         System.out.println("O menor número dos 5 digitados é: "+numMenor);
-        System.out.println();
         System.out.println("Média dos valores: "+(soma/n1));
     }
 }
