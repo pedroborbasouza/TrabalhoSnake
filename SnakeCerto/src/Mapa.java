@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class Mapa {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[][] mapa = new String[7][7];  //Declaracao do mapa logico do game
-        String Mover; //Variavel para detectar a direção
+        String[][] mapa = new String[7][7];  //Declaração do mapa logico do game
+        String Mover; //Variável para detectar a direção
         int x = -1, y = -1, auxX, auxY, ComidaLinha = -1, ComidaColuna = -1, ok = 0, bateu = 0;
+        int opcao;
 
         GerarMapa(mapa); //gera a matriz do mapa
 
@@ -61,11 +61,9 @@ public class Mapa {
                     auxY = y;
                     auxX = x;
                     x--;
-                    if (x == ComidaLinha && y == ComidaColuna) {
-                        // testa se a posicao da cabeca da cobra e da comida é a mesma, caso for o algoritimos solicita
-                        // uma nova posição
+                    if (x == ComidaLinha && y == ComidaColuna) { // testa se a posição da cabeça da cobra e da comida é a mesma, caso for o algoritmo solicita uma nova posição
                         ok = 0;
-                        while (ok == 0){
+                        while (ok == 0) {
 
                             //entrada de dados para definir a nova posição da comida
 
@@ -103,6 +101,7 @@ public class Mapa {
                     mapa[x][y] = "<";
                     mapa[auxX][auxY] = "*";
                     if (x == ComidaLinha && y == ComidaColuna) {
+
                         do {
                             System.out.println("Insira a posição da comida na linha de 0 até 6");
                             ComidaLinha = sc.nextInt();
@@ -155,6 +154,7 @@ public class Mapa {
                     mapa[x][y] = ">";
                     mapa[auxX][auxY] = "*";
                     if (x == ComidaLinha && y == ComidaColuna) {
+
                         do {
                             System.out.println("Insira a posição da comida na linha de 0 até 6");
                             ComidaLinha = sc.nextInt();
@@ -179,7 +179,6 @@ public class Mapa {
     }
 
     public static void GerarMapa(String[][] mapa) {  //Imprime o mapa logico do jogo na tela
-
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
                 mapa[i][j] = "*";
@@ -189,12 +188,20 @@ public class Mapa {
         }
     }
 
-    public static void AtualizarMapa(String[][] AtualizarMapa) { //Atualiza o mapa
+    public static int[][] AtualizarMapa(String[][] AtualizarMapa) { //Atualiza o mapa
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
                 System.out.print(AtualizarMapa[i][j] + "  ");
             }
             System.out.println();
         }
+        return new int[0][];
+    }
+
+    public static int[][] aumentarCobra(int[] inputFruta, int[][] posicaoSegmentos) {
+        int[][] novaPosicaoSegmentos = new int[posicaoSegmentos.length + 1][];
+        System.arraycopy(posicaoSegmentos, 0, novaPosicaoSegmentos, 1, posicaoSegmentos.length);
+        novaPosicaoSegmentos[0] = inputFruta;
+        return novaPosicaoSegmentos;
     }
 }
