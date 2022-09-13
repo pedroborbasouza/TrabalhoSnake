@@ -175,7 +175,7 @@ public class Mapa {
                     AtualizarMapa(mapa);
                     break;
             }
-        } while (Mover != "E");
+        } while (!Mover.equalsIgnoreCase("E"));
     }
 
     public static void GerarMapa(String[][] mapa) {  //Imprime o mapa logico do jogo na tela
